@@ -50,6 +50,7 @@ output = "build"
 pipeline = [
     "beet.contrib.unknown_files",
     "mecha",
+    "template",
     "template.versioning",
 ]
 require=[
