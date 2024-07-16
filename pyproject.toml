@@ -1,0 +1,109 @@
+[tool.poetry]
+name = "template"
+version = "0.1.0"
+description = ""
+authors = ["edayot <pro.e.dayot@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+beet = {git = "https://github.com/edayot/beet.git", branch = "1.21-fixes_from_TheNuclearNexus_branch"}
+mecha = ">=0.94.0"
+weld-deps = ">=0.8.0"
+bolt = "^0.48.0"
+model-resolver = "^0.9.0"
+
+[tool.poetry.dev-dependencies]
+python-semantic-release = "^8.7.0"
+
+
+[tool.semantic_release]
+major_on_zero = false
+build_command = '''
+    beet -s data_pack.zipped=true \
+         -s resource_pack.zipped=true \
+         -s meta.weld_deps.enabled=true && \
+         -s data_pack.name="{{ project_id }}_{{ project_version }}_dp_bundled" \
+         -s resource_pack.name="{{ project_id }}_{{ project_version }}_rp_bundled"
+    beet -s data_pack.zipped=true \
+         -s resource_pack.zipped=true \
+         -s meta.weld_deps.enabled=false \
+         -s data_pack.name="{{ project_id }}_{{ project_version }}_dp" \
+         -s resource_pack.name="{{ project_id }}_{{ project_version }}_rp"
+'''
+dist_path = "build"
+version_toml = ["pyproject.toml:tool.poetry.version"]
+version_source = "commit"
+
+remove_dist = false
+tag_format = "v{version}"
+
+[tool.semantic_release.publish]
+dist_glob_patterns = ["build/*.zip"]
+upload_to_vcs_release = true
+
+
+
+[tool.beet]
+output = "build"
+
+pipeline = [
+    "beet.contrib.unknown_files",
+    "mecha",
+    "template.versioning",
+]
+require=[
+    "bolt",
+    "weld_deps",
+    "mecha.contrib.relative_location",
+    "mecha.contrib.nested_location",
+]
+
+[tool.beet.data_pack]
+name = "{{ project_id }}_{{ project_version }}_dp_bundled"
+load = "."
+pack_format = 48
+
+[tool.beet.resource_pack]
+name = "{{ project_id }}_{{ project_version }}_rp_bundled"
+load = "."
+
+[tool.beet.meta]
+mc_supports = ["1.21"]
+minecraft_version = "1.21"
+
+[tool.beet.meta.mecha]
+multiline = true
+match = ["template:**"]
+
+
+[tool.beet.meta.model_resolver]
+render_size = 256
+load_vanilla = true
+save_namespace = "template"
+
+
+[[tool.beet.meta.weld_deps.deps]]
+id = "itemio"
+version = "1.1.0"
+
+
+[tool.beet.meta.smithed.versioning]
+scheduled_paths="impl/tick"
+
+[tool.beet.meta.smithed.versioning.lantern_load]
+step="load"
+tag_path="load"
+function_path="impl/test_load"
+
+[tool.beet.meta.smithed.versioning.refactor]
+match="{{ project_id }}:*"
+find="{{ project_id }}:impl/"
+replace="{{ project_id }}:v{{ version }}/"
+
+
+[tool.beet.meta.smithed.versioning.api]
+match="{{ project_id }}:v{{ version }}"
+implementation_prefix="{{ project_id }}:v{{ version }}/"
+version_check_path="v{{ version }}/calls"
+tag_path="calls"
