@@ -12,3 +12,11 @@ def beet_default(ctx: Context):
             {Lang.en_us: "Grappling hook", Lang.fr_fr: "Grapin"},
         ),
     ).export(ctx)
+    grappling_hook = Item(
+        id="grappling_hook_bis",
+        base_item="minecraft:crossbow",
+        item_name=(
+            f"{NAMESPACE}.item.grappling_hook",
+            {Lang.en_us: "Grappling hook", Lang.fr_fr: "Grapin"},
+        ),
+    ).export(ctx)

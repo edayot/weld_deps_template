@@ -22,6 +22,9 @@ python-semantic-release = "^8.7.0"
 custom_model_data = 1430000
 generate_guide = false
 
+[tool.beet.meta.model_merging]
+predicate_order = ["custom_model_data", "pulling", "pull", "charged", "firework"]
+
 [[tool.beet.meta.weld_deps.deps]]
 id = "itemio"
 version = "1.2.6"
