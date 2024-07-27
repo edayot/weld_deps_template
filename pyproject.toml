@@ -22,6 +22,11 @@ python-semantic-release = "^8.7.0"
 custom_model_data = 1430000
 generate_guide = false
 
+[[tool.beet.meta.weld_deps.deps]]
+id = "itemio"
+version = "1.2.6"
+
+
 [tool.semantic_release]
 major_on_zero = false
 build_command = '''
@@ -86,10 +91,6 @@ render_size = 256
 load_vanilla = true
 save_namespace = "template"
 
-
-[[tool.beet.meta.weld_deps.deps]]
-id = "itemio"
-version = "1.1.0"
 
 
 [tool.beet.meta.smithed.versioning]
