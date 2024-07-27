@@ -18,6 +18,10 @@ simple-item-plugin = ">=0.7.0"
 python-semantic-release = "^8.7.0"
 
 
+[tool.beet.meta.simple_item_plugin]
+custom_model_data = 1430000
+generate_guide = false
+
 [tool.semantic_release]
 major_on_zero = false
 build_command = '''
