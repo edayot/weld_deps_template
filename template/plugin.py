@@ -4,11 +4,11 @@ from simple_item_plugin.item import Item
 
 
 def beet_default(ctx: Context):
-    print("Hello, world!")
-    graplin = Item(
-        id="graplin",
+    grappling_hook = Item(
+        id="grappling_hook",
+        base_item="minecraft:crossbow",
         item_name=(
-            f"{NAMESPACE}.item.graplin",
-            {Lang.en_us: "Graplin", Lang.fr_fr: "Graplin"},
+            f"{NAMESPACE}.item.grappling_hook",
+            {Lang.en_us: "Grappling hook", Lang.fr_fr: "Grapin"},
         ),
     ).export(ctx)
