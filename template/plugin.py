@@ -1,6 +1,6 @@
 from beet import Context
 from simple_item_plugin.types import NAMESPACE, Lang
-from simple_item_plugin.item import Item
+from simple_item_plugin.item import Item, MergeOverridesPolicy
 
 
 def beet_default(ctx: Context):
@@ -11,6 +11,9 @@ def beet_default(ctx: Context):
             f"{NAMESPACE}.item.grappling_hook",
             {Lang.en_us: "Grappling hook", Lang.fr_fr: "Grapin"},
         ),
+        merge_overrides_policy={
+            "layer0": MergeOverridesPolicy.use_model_path
+        },
     ).export(ctx)
     grappling_hook = Item(
         id="grappling_hook_bis",
@@ -19,4 +22,7 @@ def beet_default(ctx: Context):
             f"{NAMESPACE}.item.grappling_hook",
             {Lang.en_us: "Grappling hook", Lang.fr_fr: "Grapin"},
         ),
+        merge_overrides_policy={
+            "layer0": MergeOverridesPolicy.use_model_path
+        },
     ).export(ctx)
