@@ -21,9 +21,8 @@ generate_guide = true
 [tool.beet.meta.model_merging]
 predicate_order = ["custom_model_data", "pulling", "pull", "charged", "firework"]
 
-[[tool.beet.meta.weld_deps.deps]]
-id = "itemio"
-version = "1.2.6"
+[tool.beet.meta.weld_deps.deps]
+"itemio" = "1.2.6"
 
 
 [tool.semantic_release]
