@@ -1,6 +1,6 @@
 from beet import Context
 from simple_item_plugin.types import NAMESPACE, Lang
-from simple_item_plugin.item import Item, MergeOverridesPolicy
+from simple_item_plugin.item import Item
 from simple_item_plugin.crafting import ShapedRecipe, VanillaItem
 
 
@@ -12,9 +12,6 @@ def beet_default(ctx: Context):
             f"{NAMESPACE}.item.grappling_hook",
             {Lang.en_us: "Normal Grappling hook", Lang.fr_fr: "Grapin normal"},
         ),
-        merge_overrides_policy={
-            "layer0": MergeOverridesPolicy.use_model_path
-        },
         guide_description=(f"{NAMESPACE}.guide.normal", {
             Lang.en_us: "The normal grappling hook.",
             Lang.fr_fr: "Le grappin normal."
@@ -38,11 +35,11 @@ def beet_default(ctx: Context):
         })
     ).export(ctx)
 
-    crossbow = VanillaItem("minecraft:crossbow")
-    slimeball = VanillaItem("minecraft:slime_ball")
+    crossbow = VanillaItem(id="minecraft:crossbow")
+    slimeball = VanillaItem(id="minecraft:slime_ball")
 
     ShapedRecipe(
-        (
+        items=(
             (crossbow, slimeball, None),
             (slimeball, slimeball, None),
             (None, None, None),
