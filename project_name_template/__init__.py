@@ -1,0 +1,1 @@
+from project_name_template.plugin import beet_default

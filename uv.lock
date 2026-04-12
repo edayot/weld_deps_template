@@ -380,6 +380,39 @@ wheels = [
 ]
 
 [[package]]
+name = "project-name-template"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "beet" },
+    { name = "bolt" },
+    { name = "mecha" },
+    { name = "pyyaml" },
+    { name = "requests" },
+    { name = "simple-item-plugin" },
+    { name = "weld-deps" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "python-semantic-release" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "beet", specifier = ">=0.113.0b10" },
+    { name = "bolt", specifier = ">=0.50.0b5" },
+    { name = "mecha", specifier = ">=0.102.0b2" },
+    { name = "pyyaml", specifier = ">=6.0.0" },
+    { name = "requests", specifier = ">=2.32.0" },
+    { name = "simple-item-plugin", specifier = ">=0.9.1" },
+    { name = "weld-deps", specifier = ">=0.15.0" },
+]
+
+[package.metadata.requires-dev]
+dev = [{ name = "python-semantic-release", specifier = ">=10.5.0" }]
+
+[[package]]
 name = "pydantic"
 version = "2.12.5"
 source = { registry = "https://pypi.org/simple" }
@@ -596,39 +629,6 @@ sdist = { url = "https://files.pythonhosted.org/packages/1f/ea/49c993d6dfdd7338c
 wheels = [
     { url = "https://files.pythonhosted.org/packages/c1/d4/59e74daffcb57a07668852eeeb6035af9f32cbfd7a1d2511f17d2fe6a738/smmap-5.0.3-py3-none-any.whl", hash = "sha256:c106e05d5a61449cf6ba9a1e650227ecfb141590d2a98412103ff35d89fc7b2f", size = 24390, upload-time = "2026-03-09T03:43:24.361Z" },
 ]
-
-[[package]]
-name = "template"
-version = "0.1.0"
-source = { virtual = "." }
-dependencies = [
-    { name = "beet" },
-    { name = "bolt" },
-    { name = "mecha" },
-    { name = "pyyaml" },
-    { name = "requests" },
-    { name = "simple-item-plugin" },
-    { name = "weld-deps" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "python-semantic-release" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "beet", specifier = ">=0.113.0b10" },
-    { name = "bolt", specifier = ">=0.50.0b5" },
-    { name = "mecha", specifier = ">=0.102.0b2" },
-    { name = "pyyaml", specifier = ">=6.0.0" },
-    { name = "requests", specifier = ">=2.32.0" },
-    { name = "simple-item-plugin", specifier = ">=0.9.1" },
-    { name = "weld-deps", specifier = ">=0.15.0" },
-]
-
-[package.metadata.requires-dev]
-dev = [{ name = "python-semantic-release", specifier = ">=10.5.0" }]
 
 [[package]]
 name = "tokenstream"

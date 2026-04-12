@@ -1,4 +1,4 @@
-# WeldDeps Template
+# project_name_template
 
 This readme will show you how to use the WeldDeps template to create a new datapack project.
 
